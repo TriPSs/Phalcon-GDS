@@ -10,12 +10,11 @@ namespace Phalcon\Datastore;
 
 use Phalcon\Datastore\Model\ResultSet;
 use Phalcon\Datastore\Query\Builder;
-use Phalcon\Datastore\Query\Filter;
-use Phalcon\Datastore\Query\OrderBy;
 use GDS\Gateway\RESTv1;
 use GDS\Store;
 use GDS\Gateway\ProtoBuf;
 use Phalcon\Di;
+use Phalcon\Exception;
 
 class Client extends Store {
 
@@ -24,15 +23,22 @@ class Client extends Store {
     /**
      * Client constructor.
      *
-     * @param Model  $model
-     * @param string $namespace
+     * @param Model       $model
+     * @param string|NULL $namespace
+     *
+     * @throws Exception
      */
     public function __construct(Model $model, string $namespace = NULL) {
         $this->di = Di::getDefault();
-        $config   = $this->di->get("config")->gcloud;
-        $gateWay  = NULL;
 
-        if (LOCAL) {
+        if (!$this->di->has("phalcon-gds")) {
+            throw new Exception('No config found! Please use `$di->setShared("phalcon-gds")` to set your config!');
+        }
+
+        $config  = $this->di->get("phalcon-gds");
+        $gateWay = NULL;
+
+        if (isset($config->useRest) && $config->useRest) {
             $gateWay = new RESTv1($config->projectId, $namespace);
 
         } else {
