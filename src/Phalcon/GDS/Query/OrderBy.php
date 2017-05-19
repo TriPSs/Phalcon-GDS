@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tycho
- * Date: 03/05/2017
- * Time: 17:42
- */
 
 namespace Phalcon\Datastore\Query;
 

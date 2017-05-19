@@ -6,7 +6,7 @@ use Phalcon\Datastore\Query\Builder;
 use GDS\Mapper;
 use Phalcon\Di;
 
-class Model extends Entity {
+abstract class Model extends Entity {
 
     private $di;
 
@@ -172,7 +172,7 @@ class Model extends Entity {
 
         return $this->client;
     }
-
+    
     public static function client(): Client {
         return self::getModel()->getClient();
     }

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tycho
- * Date: 04/05/2017
- * Time: 09:06
- */
 
 namespace Phalcon\Datastore;
 

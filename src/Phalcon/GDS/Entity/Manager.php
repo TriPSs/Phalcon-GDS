@@ -3,7 +3,6 @@
 namespace Phalcon\Datastore\Entity;
 
 use Phalcon\Datastore\Entity;
-use GDS\Schema;
 
 class Manager {
 
@@ -69,4 +68,5 @@ class Manager {
     public function addFields(array $fields) {
         $this->fields = array_merge($this->getFields(), $fields);
     }
+
 }

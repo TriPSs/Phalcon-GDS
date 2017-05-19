@@ -45,4 +45,5 @@ class Manager implements ManagerInterface {
     }
 
     public function getListeners($type) { }
+
 }

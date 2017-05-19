@@ -5,7 +5,7 @@ namespace Phalcon\Datastore;
 use Phalcon\Datastore\Events\Manager as EventManager;
 use Phalcon\Datastore\Entity\Manager as EntityManager;
 
-class Entity extends \GDS\Entity {
+abstract class Entity extends \GDS\Entity {
 
     /**
      * Default field
