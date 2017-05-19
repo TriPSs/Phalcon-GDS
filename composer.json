@@ -1,0 +1,48 @@
+{
+  "name":         "tripss/phalcon-gds",
+  "type":         "library",
+  "description":  "Google Cloud Datastore Library for Phalcon",
+  "keywords":     [
+    "google",
+    "datastore",
+    "appengine",
+    "gae",
+    "cloud datastore",
+    "nosql",
+    "phalcon"
+  ],
+  "homepage":     "https://github.com/tripss/phalcon-gds",
+  "license":      "MIT",
+  "authors":      [
+    {
+      "name":  "Tycho Bokdam",
+      "email": "t.bokdam@seronaris.nl"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url":  "https://github.com/tripss/php-gds"
+    }
+  ],
+  "require":      {
+    "php":               ">=7.0.0",
+    "tomwalder/php-gds": "dev-develop"
+  },
+  "require-dev":  {
+    "google/appengine-php-sdk": ">=1.9.22",
+    "phpunit/phpunit":          "~4.8",
+    "google/apiclient":         "1.1.6"
+  },
+  "autoload":     {
+    "classmap": [
+      "src/"
+    ],
+    "psr-4":    {
+      "Phalcon\\GDS\\": "src/Phalcon/GDS"
+    }
+  },
+  "include-path": [
+    "src/"
+  ]
+}
