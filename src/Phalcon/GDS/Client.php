@@ -46,6 +46,13 @@ class Client extends Store {
         $this->setEntityClass(get_class($model));
     }
 
+    /**
+     * Fetch record by key
+     *
+     * @param $idOrName
+     *
+     * @return bool|ResultSet
+     */
     public function fetchBy($idOrName) {
         if (is_numeric($idOrName)) {
             $result = $this->fetchById($idOrName);
@@ -79,10 +86,24 @@ class Client extends Store {
         return $this->convertToResultSet($result);
     }
 
+    /**
+     * Converts entity to model
+     *
+     * @param Entity $entity
+     *
+     * @return $this
+     */
     private function convertToModel(Entity $entity) {
         return $entity->toModel();
     }
 
+    /**
+     * Converts the result to a result set
+     *
+     * @param $result
+     *
+     * @return bool|ResultSet
+     */
     private function convertToResultSet($result) {
         $models = [];
         foreach ($result as $entity) {

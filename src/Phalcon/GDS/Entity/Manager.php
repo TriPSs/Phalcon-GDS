@@ -65,6 +65,11 @@ class Manager {
         $this->fields[] = $field;
     }
 
+    /**
+     * Add fields to the model
+     *
+     * @param array $fields
+     */
     public function addFields(array $fields) {
         $this->fields = array_merge($this->getFields(), $fields);
     }

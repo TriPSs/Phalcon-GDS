@@ -172,7 +172,7 @@ abstract class Model extends Entity {
 
         return $this->client;
     }
-    
+
     public static function client(): Client {
         return self::getModel()->getClient();
     }

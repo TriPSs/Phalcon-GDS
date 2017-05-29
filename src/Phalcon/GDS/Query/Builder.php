@@ -22,6 +22,13 @@ class Builder {
 
     private $hasWhere = FALSE;
 
+    /**
+     * Init the builder
+     *
+     * @param Model $model
+     *
+     * @return Builder
+     */
     public static function init(Model $model) {
         if (self::$builder === NULL) {
             self::$builder = new self;
@@ -33,14 +40,25 @@ class Builder {
         return self::$builder;
     }
 
+    /**
+     * @param $query
+     */
     public function setQuery($query) {
         $this->query = $query;
     }
 
+    /**
+     * @param $model
+     */
     public function setModel($model) {
         $this->model = $model;
     }
 
+    /**
+     * Returns the build query
+     *
+     * @return string
+     */
     public function getQuery() {
         if (!empty($this->orderBy)) {
             // $this->query .= " ORDER BY " . $this->orderBy;
@@ -84,19 +102,33 @@ class Builder {
         return $this->where($filter);
     }
 
-
+    /**
+     * @param OrderBy $orderBy
+     *
+     * @return $this
+     */
     public function orderBy(OrderBy $orderBy) {
         $this->addCondition($orderBy->getQuery());
 
         return $this;
     }
 
+    /**
+     * @param int $limit
+     *
+     * @return $this
+     */
     public function limit(int $limit) {
         $this->limit = $limit;
 
         return $this;
     }
 
+    /**
+     * @param int $offset
+     *
+     * @return $this
+     */
     public function offset(int $offset) {
         $this->offset = $offset;
 
@@ -112,6 +144,14 @@ class Builder {
         return $client->execute($this);
     }
 
+    /**
+     * Adds a condition to the query
+     *
+     * @param        $search
+     * @param string $prependWith
+     *
+     * @return $this
+     */
     private function addCondition($search, $prependWith = "AND") {
         $prependWith = strtoupper($prependWith);
         $this->query .= (empty($prependWith) ? " " : " $prependWith ") . $search;

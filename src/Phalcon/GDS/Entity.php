@@ -21,8 +21,14 @@ abstract class Entity extends \GDS\Entity {
      */
     protected $autoFillId = TRUE;
 
+    /**
+     * @var EntityManager
+     */
     protected $entityManager;
 
+    /**
+     * @var EventManager
+     */
     protected $eventManager;
 
     public function __construct() {
@@ -92,14 +98,6 @@ abstract class Entity extends \GDS\Entity {
         return $this;
     }
 
-    public function getEntityManager(): EntityManager {
-        return $this->entityManager;
-    }
-
-    public function setEntityManager(EntityManager $entityManager) {
-        $this->entityManager = $entityManager;
-    }
-
     /**
      * Adds fields in the manager
      *
@@ -109,11 +107,39 @@ abstract class Entity extends \GDS\Entity {
         $this->entityManager->addFields($fields);
     }
 
-    public function setEventManager(EventManager $eventManager) {
-        $this->eventManager = $eventManager;
+    /**
+     * Get entity manager
+     *
+     * @return EntityManager
+     */
+    public function getEntityManager(): EntityManager {
+        return $this->entityManager;
     }
 
+    /**
+     * Set entity manager
+     *
+     * @param EntityManager $entityManager
+     */
+    public function setEntityManager(EntityManager $entityManager) {
+        $this->entityManager = $entityManager;
+    }
+
+    /**
+     * Get event manager
+     *
+     * @return EventManager
+     */
     public function getEventManager(): EventManager {
         return $this->eventManager;
+    }
+
+    /**
+     * Set event manager
+     *
+     * @param EventManager $eventManager
+     */
+    public function setEventManager(EventManager $eventManager) {
+        $this->eventManager = $eventManager;
     }
 }

@@ -7,19 +7,39 @@ use Iterator;
 
 class ResultSet implements Iterator {
 
+    /**
+     * Current pusition
+     *
+     * @var int
+     */
     private $position = 0;
 
     private $result;
 
     private $size;
 
+    /**
+     * All valid fields of the Entity
+     *
+     * @var
+     */
     private $fields;
 
+    /**
+     * ResultSet constructor.
+     *
+     * @param array $result
+     */
     public function __construct(array $result) {
         $this->result = $result;
         $this->size   = count($result);
     }
 
+    /**
+     * Returns the first result in the set or false when there is no result
+     *
+     * @return bool|mixed
+     */
     public function getFirst() {
         if (count($this->result) > 0) {
             $model = $this->result[ 0 ];
@@ -41,6 +61,11 @@ class ResultSet implements Iterator {
         return $this->result[ $this->size - 1 ];
     }
 
+    /**
+     * Converts the result set to a array
+     *
+     * @return array
+     */
     public function toArray() {
         $resultArray = [];
 
@@ -78,10 +103,20 @@ class ResultSet implements Iterator {
         $this->position = 0;
     }
 
+    /**
+     * Set the valid fields
+     *
+     * @param array $fields
+     */
     public function setFields(array $fields) {
         $this->fields = $fields;
     }
 
+    /**
+     * Add valid fields
+     *
+     * @param array $fields
+     */
     public function addFields(array $fields) {
         if (empty($this->fields)) {
             $this->setFields($fields);
