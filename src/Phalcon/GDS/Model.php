@@ -57,7 +57,9 @@ abstract class Model extends Entity {
     }
 
     public static function findFirstById($id) {
-        return self::findById($id)->getFirst();
+        $result = self::findById($id);
+
+        return $result ? $result->getFirst() : $result;
     }
 
     public static function findById($id) {
